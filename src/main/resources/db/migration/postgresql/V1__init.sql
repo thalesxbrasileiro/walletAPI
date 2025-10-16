@@ -1,39 +1,39 @@
 create table users(
-    id serial,
-    name varchar(50),
-    password varchar,
-    email varchar(100),
+    id SERIAL,
+    name VARCHAR(50),
+    password VARCHAR,
+    email VARCHAR(100),
 
-    primary key (id)
+    PRIMARY KEY(id)
 );
 
 
 create table wallet(
-    id serial,
-    name varchar(60),
-    value numeric(10,2),
+    id SERIAL,
+    name VARCHAR(60),
+    amount NUMERIC(10,2),
 
-    primary key (id)
+    PRIMARY KEY(id)
 );
 
 create table users_wallet(
-     id serial,
-     wallet integer,
-     users integer,
+     id SERIAL,
+     wallet INTEGER,
+     users INTEGER,
 
-     primary key(id),
-     foreign key(users) references users(id),
-     foreign key(wallet) references wallet(id)
+     PRIMARY KEY(id),
+     FOREIGN KEY(users) REFERENCES users(id),
+     FOREIGN KEY(wallet) REFERENCES wallet(id)
 );
 
 create table wallet_items(
-     id serial,
-     wallet integer,
-     date date,
-     type varchar(2),
-     description varchar(500),
-     value numeric(10,2),
+     id SERIAL,
+     wallet INTEGER,
+     date DATE,
+     type VARCHAR(2),
+     description VARCHAR(500),
+     amount NUMERIC(10,2),
 
-     primary key(id),
-     foreign key(wallet) references wallet(id)
+     PRIMARY KEY(id),
+     FOREIGN KEY(wallet) REFERENCES wallet(id)
 );

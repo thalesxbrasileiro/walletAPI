@@ -3,6 +3,7 @@ package com.udemy.wallet.service;
 import com.udemy.wallet.entity.User;
 import com.udemy.wallet.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
@@ -20,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles("test")
+@DisplayName("Testes do Serviço de Usuário")
 public class UserServiceTest {
 
     @MockBean
@@ -34,6 +36,7 @@ public class UserServiceTest {
     }
 
     @Test
+    @DisplayName("Deve buscar um usuário pelo email")
     public void testFindByEmail() {
         Optional<User> user = userService.findByEmail("email@test.com");
 

@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles("test")
+@DisplayName("Testes do Repositório de Usuário")
 public class UserRepositoryTest {
 
     private static final String EMAIL = "email@email.com";
@@ -38,6 +39,7 @@ public class UserRepositoryTest {
     }
 
     @Test
+    @DisplayName("Deve salvar um usuário com sucesso")
     public void testSave() {
         User user = new User();
         user.setName("Teste");
@@ -50,6 +52,7 @@ public class UserRepositoryTest {
     }
 
     @Test
+    @DisplayName("Deve buscar um usuário pelo email")
     public void testFindByEmail() {
         Optional<User> response = userRepository.findByEmail(EMAIL);
 

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.udemy.wallet.dto.UserDto;
 import com.udemy.wallet.entity.User;
 import com.udemy.wallet.service.UserService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
+@DisplayName("Testes do Controller de Usuário")
 public class UserControllerTest {
 
     private static final Long ID = 1L;
@@ -41,6 +43,7 @@ public class UserControllerTest {
     MockMvc mvc;
 
     @Test
+    @DisplayName("Deve salvar um usuário com sucesso")
     public void testSave() throws Exception {
 
         BDDMockito.given(userService.save(Mockito.any(User.class))).willReturn(getMockUser());
@@ -52,11 +55,12 @@ public class UserControllerTest {
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.data.id").value(ID))
         .andExpect(jsonPath("$.data.name").value(NAME))
-        .andExpect(jsonPath("$.data.password").value(PASSWORD))
+        .andExpect(jsonPath("$.data.password").doesNotExist())
         .andExpect(jsonPath("$.data.email").value(EMAIL));
     }
 
     @Test
+    @DisplayName("Deve retornar erro de validação ao tentar salvar um usuário com email inválido")
     public void testSaveInvalidUser() throws Exception {
 
         mvc.perform(MockMvcRequestBuilders.post(URL)

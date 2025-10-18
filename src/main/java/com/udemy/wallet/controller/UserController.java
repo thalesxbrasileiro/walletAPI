@@ -4,6 +4,7 @@ import com.udemy.wallet.dto.UserDto;
 import com.udemy.wallet.entity.User;
 import com.udemy.wallet.response.Response;
 import com.udemy.wallet.service.UserService;
+import com.udemy.wallet.util.Bcrypt;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class UserController {
         User user = new User();
         user.setId(dto.getId());
         user.setName(dto.getName());
-        user.setPassword(dto.getPassword());
+        user.setPassword(Bcrypt.getHash(dto.getPassword()));
         user.setEmail(dto.getEmail());
 
         return user;
@@ -52,7 +53,6 @@ public class UserController {
         UserDto dto = new UserDto();
         dto.setId(user.getId());
         dto.setName(user.getName());
-        dto.setPassword(user.getPassword());
         dto.setEmail(user.getEmail());
 
         return dto;

@@ -29,6 +29,7 @@ public class UserController {
 
         if(result.hasErrors()) {
             result.getAllErrors().forEach(e -> response.getErrors().add(e.getDefaultMessage()));
+
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 

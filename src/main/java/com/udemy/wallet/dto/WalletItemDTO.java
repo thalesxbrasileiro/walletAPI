@@ -2,6 +2,7 @@ package com.udemy.wallet.dto;
 
 import com.udemy.wallet.entity.Wallet;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -20,6 +21,7 @@ public class WalletItemDTO {
     private Date date;
 
     @NotNull(message = "Informe um tipo")
+    @Pattern(regexp = "^(ENTRADA|SAÍDA)$", message = "Para o tipo somente são aceitos ENTRADA ou SAÍDA")
     private String type;
 
     @NotNull(message = "Informe uma descrição")

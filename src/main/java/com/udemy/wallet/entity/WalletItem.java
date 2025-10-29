@@ -1,5 +1,6 @@
 package com.udemy.wallet.entity;
 
+import com.udemy.wallet.util.enums.TypeEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -29,7 +30,8 @@ public class WalletItem implements Serializable {
     private Date date;
 
     @NotNull
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private TypeEnum type;
 
     @NotNull
     private String description;

@@ -2,6 +2,7 @@ package com.udemy.wallet.repository;
 
 import com.udemy.wallet.entity.Wallet;
 import com.udemy.wallet.entity.WalletItem;
+import com.udemy.wallet.util.enums.TypeEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class WalletItemRepositoryTest {
 
     private static Date DATE = new Date();
-    private static String TYPE = "EN";
+    private static TypeEnum TYPE = TypeEnum.EN;
     private static String DESCRIPTION = "Conta de Luz";
     private static BigDecimal AMOUNT = BigDecimal.valueOf(65);
 

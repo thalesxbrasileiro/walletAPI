@@ -1,5 +1,7 @@
 # configurar conexão banco H2 em memória
 spring:
+    main:
+        banner-mode: off
     datasource:
         url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
         driver-class-name: org.h2.Driver
@@ -13,3 +15,8 @@ spring:
             show_sql: true
             format_sql: true
             use_sql_comments: true
+
+# Configuração para reduzir a verbosidade dos logs durante os testes
+logging:
+    level:
+        root: WARN # Define o nível padrão para AVISOS, escondendo os logs de INFO
